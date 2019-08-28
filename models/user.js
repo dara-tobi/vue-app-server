@@ -6,7 +6,7 @@ let userSchema = new Schema({
 	last: { type: String, required: true },
 	email: { type: String, required: true },
 	password: { type: String, required: true },
-	isAcive: { type: Boolean, required: true },
+	isActive: { type: Boolean, required: true },
 	created_on: { type: Date, default: Date.now }
 });
 
