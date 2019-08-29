@@ -1,9 +1,9 @@
 const Transaction = require('../../models/transaction')
 const mongoose = require('mongoose')
 
-module.exports = function (router) {
+module.exports = router => {
   // Get transactions for given year and month, by userId...
-  router.get('/transaction/:year/:month', function (req, res) {
+  router.get('/transaction/:year/:month', (req, res) => {
     const userId = req.get('userId')
     const month = req.params.month - 1 // JS months are zero-based
     const year = req.params.year
@@ -31,7 +31,7 @@ module.exports = function (router) {
   })
 
   // Get transactions running balance for a specific user...
-  router.get('/transaction/balance/:year/:month', function (req, res) {
+  router.get('/transaction/balance/:year/:month', (req, res) => {
     const userId = req.get('userId')
     const month = req.params.month - 1 // JS months are zero-based
     const year = req.params.year
@@ -67,9 +67,9 @@ module.exports = function (router) {
   })
 
   // Create new transaction document...
-  router.post('/transaction', function (req, res) {
+  router.post('/transaction', (req, res) => {
     let transaction = new Transaction(req.body)
-    transaction.save(function (err, transaction) {
+    transaction.save((err, transaction) => {
       if (err) return console.log(err)
       res.status(200).json(transaction)
     })
