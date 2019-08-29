@@ -32,10 +32,11 @@ module.exports = router => {
 
   // Get transactions running balance for a specific user...
   router.get('/transaction/balance/:year/:month', (req, res) => {
-    const userId = req.get('userId')
+    const userId = req.query.userId
     const month = req.params.month - 1 // JS months are zero-based
     const year = req.params.year
     const endDt = new Date(Date.UTC(year, month, 1))
+
     const pipeline = [
       {
         $match: {
