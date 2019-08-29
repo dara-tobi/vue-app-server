@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 module.exports = router => {
   // Get transactions for given year and month, by userId...
   router.get('/transaction/:year/:month', (req, res) => {
-    const userId = req.get('userId')
+    const userId = req.query.userId
     const month = req.params.month - 1 // JS months are zero-based
     const year = req.params.year
     const startDt = new Date(Date.UTC(year, month, 1, 0, 0, 0))
