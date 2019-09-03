@@ -24,10 +24,10 @@ router.get('/user/email/:email', function (req, res) {
 	})
 
 router.post('/user/', function (req, res) {
-		let user = new User(req.body);
+		let user = new User(req.body)
 		user.save(function (err, user) {
-			if (err) return console.log(err);
-			res.status(200).json(user);
+			if (err) return console.log(err)
+			res.status(200).json(user)
 		});
 	})
 
@@ -41,8 +41,6 @@ router.put('/user/:id', function (req, res) {
 			password: req.body.password,
 			isActive: req.body.isActive
 		}
-
-		console.log(doc);
 
 		User.update(query, doc, function (err, updateRes) {
 			if (err) return console.log(err);
